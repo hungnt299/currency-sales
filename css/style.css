@@ -2900,6 +2900,12 @@ ol {
 	letter-spacing: 2px;
 }
 
+.logo1 {
+	width: 115px;
+	border-radius: 100px;
+	border: 6px solid #88a227;
+}
+
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 
 @media only screen and (min-width: 1200px) {
