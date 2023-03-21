@@ -436,6 +436,8 @@
 		<!-- Footer Section End -->
 	</div>
 
+	<!-- axios -->
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<!-- Vuejs -->
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
@@ -464,10 +466,23 @@
 				],
 			},
 			mounted() {
-				// get api
-				fetch('https://jsonplaceholder.typicode.com/photos')
-					.then(response => response.json())
-					.then(json => console.log(json))
+				this.getTodoItems()
+			},
+			methods: {
+				async getTodoItems() {
+					const BASE_URL = 'https://jsonplaceholder.typicode.com';
+					try {
+						const response = await axios.get(`${BASE_URL}/todos?_limit=5`);
+
+						const todoItems = response.data;
+
+						console.log(`GET: Here's the list of todos`, todoItems);
+
+						return todoItems;
+					} catch (errors) {
+						console.error(errors);
+					}
+				}
 			}
 		})
 	</script>
