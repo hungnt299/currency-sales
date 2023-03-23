@@ -143,9 +143,10 @@
 						<div class="header__cart">
 							<ul>
 								<li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-								<li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+								<li><a href="#"><i class="fa fa-shopping-bag"></i> <span>{{ cartItems.length
+											}}</span></a></li>
 							</ul>
-							<div class="header__cart__price">Tổng: <span>$150.00</span></div>
+							<div class="header__cart__price">Tổng: <span>{{ cartAmount }} đ</span></div>
 						</div>
 					</div>
 				</div>
@@ -244,123 +245,21 @@
 					</div>
 				</div>
 				<div class="row featured__filter">
-					<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+					<div v-for="(product, index) in products" :key="index"
+						class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
 						<div class="featured__item">
-							<div class="featured__item__pic set-bg" data-setbg="img/logo/tien1.jpg">
+							<div class="featured__item__pic set-bg" :data-setbg="product.image">
 								<ul class="featured__item__pic__hover">
-									<li><a href="#"><i class="fa fa-heart"></i></a></li>
-									<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-									<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+									<li><button @click="buyNow(product)"><i class="fa fa-shopping-basket"></i></button>
+									</li>
+									<li><button><i class="fa fa-retweet"></i></button></li>
+									<li><button @click="addCart(product)"><i class="fa fa-shopping-cart"></i></button>
+									</li>
 								</ul>
 							</div>
 							<div class="featured__item__text">
-								<h6><a href="#">Tiền Polime Số Seri Đẹp</a></h6>
-								<h5>750.000đ</h5>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood">
-						<div class="featured__item">
-							<div class="featured__item__pic set-bg" data-setbg="img/logo/tien2.jpg">
-								<ul class="featured__item__pic__hover">
-									<li><a href="#"><i class="fa fa-heart"></i></a></li>
-									<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-									<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-								</ul>
-							</div>
-							<div class="featured__item__text">
-								<h6><a href="#">Tiền 100 USD Số Đẹp</a></h6>
-								<h5>3.990.000đ</h5>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat">
-						<div class="featured__item">
-							<div class="featured__item__pic set-bg" data-setbg="img/logo/tien3.jpg">
-								<ul class="featured__item__pic__hover">
-									<li><a href="#"><i class="fa fa-heart"></i></a></li>
-									<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-									<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-								</ul>
-							</div>
-							<div class="featured__item__text">
-								<h6><a href="#">Tiền Cotton Thất Quý</a></h6>
-								<h5>$30.00</h5>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 mix fastfood oranges">
-						<div class="featured__item">
-							<div class="featured__item__pic set-bg" data-setbg="img/logo/tien4.jpg">
-								<ul class="featured__item__pic__hover">
-									<li><a href="#"><i class="fa fa-heart"></i></a></li>
-									<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-									<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-								</ul>
-							</div>
-							<div class="featured__item__text">
-								<h6><a href="#">Tiền Seri Độc Đáo, Đặc Biệt</a></h6>
-								<h5>$30.00</h5>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
-						<div class="featured__item">
-							<div class="featured__item__pic set-bg" data-setbg="img/logo/tien5.jpg">
-								<ul class="featured__item__pic__hover">
-									<li><a href="#"><i class="fa fa-heart"></i></a></li>
-									<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-									<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-								</ul>
-							</div>
-							<div class="featured__item__text">
-								<h6><a href="#">Tiền Seri Lặp, Seri Bin</a></h6>
-								<h5>$30.00</h5>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fastfood">
-						<div class="featured__item">
-							<div class="featured__item__pic set-bg" data-setbg="img/logo/tien6.jpg">
-								<ul class="featured__item__pic__hover">
-									<li><a href="#"><i class="fa fa-heart"></i></a></li>
-									<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-									<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-								</ul>
-							</div>
-							<div class="featured__item__text">
-								<h6><a href="#">Tiền Seri Sảnh Tiến</a></h6>
-								<h5>$30.00</h5>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
-						<div class="featured__item">
-							<div class="featured__item__pic set-bg" data-setbg="img/logo/tien7.jpg">
-								<ul class="featured__item__pic__hover">
-									<li><a href="#"><i class="fa fa-heart"></i></a></li>
-									<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-									<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-								</ul>
-							</div>
-							<div class="featured__item__text">
-								<h6><a href="#">Tiền Trùng Số Seri</a></h6>
-								<h5>$30.00</h5>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6 mix fastfood vegetables">
-						<div class="featured__item">
-							<div class="featured__item__pic set-bg" data-setbg="img/logo/tien8.jpg">
-								<ul class="featured__item__pic__hover">
-									<li><a href="#"><i class="fa fa-heart"></i></a></li>
-									<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-									<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-								</ul>
-							</div>
-							<div class="featured__item__text">
-								<h6><a href="#">Tiền Seri Thần Tài 39, 79</a></h6>
-								<h5>$30.00</h5>
+								<h6><a href="#">{{ product.name }}</a></h6>
+								<h5>{{ product.price }}</h5>
 							</div>
 						</div>
 					</div>
@@ -432,8 +331,6 @@
 			</div>
 		</footer>
 		<!-- Footer Section End -->
-		</footer>
-		<!-- Footer Section End -->
 	</div>
 
 	<!-- axios -->
@@ -464,24 +361,110 @@
 						image: './img/logo/tiennamsinh.jpg'
 					},
 				],
+				products: [
+					{
+						name: 'Tiền Polime Số Seri Đẹp',
+						image: './img/logo/tien1.jpg',
+						description: 'Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Vivamus',
+						price: 399000,
+						amount: 10
+					},
+					{
+						name: 'Tiền 100 USD Số Đẹp',
+						image: './img/logo/tien2.jpg',
+						description: 'Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Vivamus',
+						price: 1239823,
+						amount: 22
+					},
+					{
+						name: 'Tiền Cotton Thất Quý',
+						image: './img/logo/tien3.jpg',
+						description: 'Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Vivamus',
+						price: 123124,
+						amount: 11
+					},
+					{
+						name: 'Tiền Seri Độc Đáo, Đặc Biệt',
+						image: './img/logo/tien4.jpg',
+						description: 'Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Vivamus',
+						price: 445254,
+						amount: 10
+					},
+					{
+						name: 'Tiền Seri Lặp, Seri Bin',
+						image: './img/logo/tien5.jpg',
+						description: 'Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Vivamus',
+						price: 399000,
+						amount: 88
+					},
+					{
+						name: 'Tiền Seri Sảnh Tiến',
+						image: './img/logo/tien6.jpg',
+						description: 'Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Vivamus',
+						price: 399000,
+						amount: 33
+					},
+					{
+						name: 'Tiền Trùng Số Seri',
+						image: './img/logo/tien7.jpg',
+						description: 'Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Vivamus',
+						price: 399000,
+						amount: 11
+					},
+					{
+						name: 'Tiền Seri Thần Tài 39, 79',
+						image: './img/logo/tien8.jpg',
+						description: 'Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Vivamus',
+						price: 1222333,
+						amount: 10
+					},
+				],
+				cartItems: [],
+				cartAmount: 0,
+				productList: [],
 			},
 			mounted() {
 				this.getTodoItems()
 			},
+			watch: {
+				productList: {
+					handler() {
+						if (localStorage.getItem('products')) {
+							this.cartItems = JSON.parse(localStorage.getItem('products'))
+							this.cartAmount = this.cartItems.reduce((accumulator, currentValue) => accumulator + currentValue.price, 0);
+						}
+					}, immediate: true
+				}
+			},
 			methods: {
-				async getTodoItems() {
-					const BASE_URL = 'https://jsonplaceholder.typicode.com';
-					try {
-						const response = await axios.get(`${BASE_URL}/todos?_limit=5`);
+				// async getTodoItems() {
+				// 	const BASE_URL = 'https://jsonplaceholder.typicode.com';
+				// 	try {
+				// 		const response = await axios.get(`${BASE_URL}/todos?_limit=5`);
 
-						const todoItems = response.data;
-
-						console.log(`GET: Here's the list of todos`, todoItems);
-
-						return todoItems;
-					} catch (errors) {
-						console.error(errors);
+				// 		const todoItems = response.data;
+				// 		// console.log(`GET: Here's the list of todos`, todoItems);
+				// 		return todoItems;
+				// 	} catch (errors) {
+				// 		console.error(errors);
+				// 	}
+				// },
+				addCart(item) {
+					this.productList = [];
+					if (localStorage.getItem('products')) {
+						this.productList = JSON.parse(localStorage.getItem('products'));
 					}
+					this.productList.push(item);
+					localStorage.setItem('products', JSON.stringify(this.productList));
+				},
+				buyNow(item) {
+					localStorage.setItem('productItem', JSON.stringify(item));
+					window.location.href = "/shop-details.html";
+				},
+				removeCart(productId) {
+					let storageProducts = JSON.parse(localStorage.getItem('products'));
+					let products = storageProducts.filter(product => product.productId !== productId);
+					localStorage.setItem('products', JSON.stringify(products));
 				}
 			}
 		})
