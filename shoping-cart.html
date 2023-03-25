@@ -332,8 +332,7 @@
 				facebookUrl: 'https://www.facebook.com/phanminhtu2302',
 				cartItems: [],
 				cartAmount: 0,
-				product: {},
-				shippingPrice: 35000
+				product: {}
 			},
 			mounted() {
 				if (localStorage.getItem('products')) {
@@ -346,6 +345,13 @@
 				},
 				totalPrice() {
 					return this.cartItems.reduce((accumulator, currentValue) => accumulator + currentValue.price, 0) + this.shippingPrice;
+				},
+				shippingPrice() {
+					if(this.totalBuy > 0) {
+						return 35000
+					} else {
+						return 0
+					}
 				}
 			},
 			methods: {
