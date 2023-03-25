@@ -208,7 +208,7 @@
 											{{ item.price }}
 										</td>
 										<td class="shoping__cart__item__close">
-											<span class="icon_close" @click="removeItem(item.id)"></span>
+											<span class="icon_close" @click="removeItem(item)"></span>
 										</td>
 									</tr>
 								</tbody>
@@ -339,11 +339,12 @@
 				}
 			},
 			methods: {
-				removeItem(id) {
+				removeItem(item) {
 					let storageProducts = JSON.parse(localStorage.getItem('products'));
-					let products = storageProducts.filter(product => product.id !== id);
+					let products = storageProducts.filter(product => product.id !== item.id);
 					localStorage.setItem('products', JSON.stringify(products));
 					this.cartItems = products;
+					this.$toastr.s("Đã xóa khỏi giỏ hàng", item.name);
 				}
 			}
 		})
