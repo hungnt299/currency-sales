@@ -208,7 +208,7 @@
 											{{ item.price }}
 										</td>
 										<td class="shoping__cart__item__close">
-											<span class="icon_close"></span>
+											<span class="icon_close" @click="removeItem(item.id)"></span>
 										</td>
 									</tr>
 								</tbody>
@@ -322,6 +322,8 @@
 	<!-- Vuejs -->
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
+
+	<script src="https://unpkg.com/vue-toastr/dist/vue-toastr.umd.min.js"></script>
 	<script>
 		var app = new Vue({
 			el: '#app',
@@ -336,6 +338,14 @@
 					this.cartItems = JSON.parse(localStorage.getItem('products'))
 				}
 			},
+			methods: {
+				removeItem(id) {
+					let storageProducts = JSON.parse(localStorage.getItem('products'));
+					let products = storageProducts.filter(product => product.id !== id);
+					localStorage.setItem('products', JSON.stringify(products));
+					this.cartItems = products;
+				}
+			}
 		})
 	</script>
 
