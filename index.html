@@ -146,7 +146,7 @@
 								<li><a href="/shoping-cart.html"><i class="fa fa-shopping-bag"></i> <span>{{ cartItems.length
 											}}</span></a></li>
 							</ul>
-							<div class="header__cart__price">Tổng: <span>{{ cartAmount }} đ</span></div>
+							<div class="header__cart__price">Tổng: <span>{{ currency(cartAmount) }}</span></div>
 						</div>
 					</div>
 				</div>
@@ -259,7 +259,7 @@
 							</div>
 							<div class="featured__item__text">
 								<h6><a href="#">{{ product.name }}</a></h6>
-								<h5>{{ product.price }}</h5>
+								<h5>{{ currency(product.price) }}</h5>
 							</div>
 						</div>
 					</div>
@@ -522,6 +522,9 @@
 				buyNow(item) {
 					localStorage.setItem('productItem', JSON.stringify(item));
 					window.location.href = "/shop-details.html";
+				},
+				currency(number) {
+					return `${new Intl.NumberFormat('en-US').format(number)} đ`
 				}
 			}
 		})
